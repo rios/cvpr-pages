@@ -1,0 +1,11 @@
+@inproceedings{Deng:CVPR2024,
+  author    = {Weijian Deng and
+               Dylan Campbell and
+               Chunyi Sun and
+               Shubham Kanitkar and
+               Matthew Shaffer and
+               Stephen Gould},
+  title     = {Differentiable Neural Surface Refinement for Transparent Objects},
+  booktitle = {CVPR},
+  year      = {2024}
+}

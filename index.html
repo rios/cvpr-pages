@@ -1,0 +1,402 @@
+<script src="http://www.google.com/jsapi" type="text/javascript"></script>
+<script type="text/javascript">google.load("jquery", "1.3.2");</script>
+
+<style type="text/css">
+    body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+        font-weight: 300;
+        font-size: 18px;
+        margin-left: auto;
+        margin-right: auto;
+        width: 1100px;
+    }
+
+    h1 {
+        font-size: 32px;
+        font-weight: 300;
+    }
+
+    .disclaimerbox {
+        background-color: #eee;
+        border: 1px solid #eeeeee;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        padding: 20px;
+    }
+
+    video.header-vid {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+    }
+
+    img.header-img {
+        height: 140px;
+        border: 1px solid black;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+    }
+
+    img.rounded {
+        border: 1px solid #eeeeee;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+    }
+
+    a:link, a:visited {
+        color: #1367a7;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #208799;
+    }
+
+    td.dl-link {
+        height: 160px;
+        text-align: center;
+        font-size: 22px;
+    }
+
+    .layered-paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.35), /* The top layer shadow */ 5px 5px 0 0px #fff, /* The second layer */ 5px 5px 1px 1px rgba(0, 0, 0, 0.35), /* The second layer shadow */ 10px 10px 0 0px #fff, /* The third layer */ 10px 10px 1px 1px rgba(0, 0, 0, 0.35), /* The third layer shadow */ 15px 15px 0 0px #fff, /* The fourth layer */ 15px 15px 1px 1px rgba(0, 0, 0, 0.35), /* The fourth layer shadow */ 20px 20px 0 0px #fff, /* The fifth layer */ 20px 20px 1px 1px rgba(0, 0, 0, 0.35), /* The fifth layer shadow */ 25px 25px 0 0px #fff, /* The fifth layer */ 25px 25px 1px 1px rgba(0, 0, 0, 0.35); /* The fifth layer shadow */
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+    .paper-big { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.35); /* The top layer shadow */
+
+        margin-left: 10px;
+        margin-right: 45px;
+    }
+
+
+    .layered-paper { /* modified from: http://css-tricks.com/snippets/css/layered-paper/ */
+        box-shadow: 0px 0px 1px 1px rgba(0, 0, 0, 0.35), /* The top layer shadow */ 5px 5px 0 0px #fff, /* The second layer */ 5px 5px 1px 1px rgba(0, 0, 0, 0.35), /* The second layer shadow */ 10px 10px 0 0px #fff, /* The third layer */ 10px 10px 1px 1px rgba(0, 0, 0, 0.35); /* The third layer shadow */
+        margin-top: 5px;
+        margin-left: 10px;
+        margin-right: 30px;
+        margin-bottom: 5px;
+    }
+
+    .vert-cent {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+    }
+</style>
+
+<html>
+<head>
+    <title>Neural Surface Refinement for Modeling Transparent Objects</title>
+    <meta property="og:image" content="./resource/teaser.png"/>
+    <meta property="og:title" content="Neural Surface Refinement for Modeling Transparent Objects"/>
+
+    <!-- Get from Google Analytics -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src=""></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', 'UA-75863369-6');
+    </script>
+</head>
+
+<body>
+<br>
+
+<center>
+    <span style="font-size:34px">Neural Surface Refinement for Modeling Transparent Objects</span>
+    <br>
+    <table align=center width=600px>
+        <tr>
+            <!---------------------  authors --------------------->
+            <span style="font-size:20px">
+				  <div style="display:inline-block">
+				  <a href="https://weijiandeng.xyz" target="_blank" style=" color:#007acc">Weijian Deng<sup>1</sup></a>,
+				  </div>
+
+				 <div style="display:inline-block">
+				  <a href="https://sites.google.com/view/djcampbell" target="_blank" style=" color:#007acc">Dylan Campbell<sup>1</sup></a>,
+				  </div>
+
+				  <div style="display:inline-block">
+				  <a href="https://chuny1.github.io/" target="_blank" style=" color:#007acc">Chunyi Sun<sup>1</sup></a>,
+				  </div>
+
+					<br>
+
+				  <div style="display:inline-block">
+				  <a href="https://www.linkedin.com/in/shubham-kanitkar" target="_blank" style=" color:#007acc">Shubham Kanitkar<sup>2</sup></a>,
+				  </div>
+
+					<div style="display:inline-block">
+				  <a href="https://www.linkedin.com/in/shaffermatthew" target="_blank" style=" color:#007acc">Matthew E. Shaffer<sup>2</sup></a>,
+				  </div>
+
+				 <div style="display:inline-block">
+				  <a href="http://users.cecs.anu.edu.au/~sgould/" target="_blank"
+                     style=" color:#007acc">Stephen Gould<sup>1</sup></a>,
+                 </div> </span>
+        </tr>
+    </table>
+
+    <!--------------------- affiliations --------------------->
+    <div class="gap-5"></div>
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-3">
+            <center><span style="font-size:20px">
+          <sup>1</sup>Australian National University, <sup>2</sup>RIOS Intelligent Machines
+        </span></center>
+        </div>
+    </div>
+    <hr>
+
+    <table align=center width=280px>
+        <tr>
+            <td align=center width=10px>
+                <center>
+                    <span style="font-size:24px"><b>CVPR'24</b></span>
+                </center>
+            </td>
+
+            <td align=center width=120px>
+                <center>
+                    <span style="font-size:24px"><a href='' target="_blank">[Paper]</a></span>
+                </center>
+            </td>
+
+            <td align=center width=120px>
+                <center>
+                    <span style="font-size:24px"><a href='resources/CVPR_2024_NSR_Poster.png' target="_blank">[Poster]</a></span>
+                </center>
+            </td>
+
+            <td align=center width=120px>
+                <center>
+                    <span style="font-size:24px"><a href='resources/CVPR24-NSR-Slides.pdf' target="_blank">[Slides]</a></span>
+                </center>
+            </td>
+
+            <td align=center width=120px>
+                <center>
+                    <span style="font-size:24px"><a href='resources/bibtex.txt' target="_blank">[Bibtex]</a></span>
+                </center>
+            </td>
+
+
+            <td align=center width=120px>
+                <center>
+                    <span style="font-size:24px"><a href='https://github.com/Simon4Yan/tnsr' target="_blank">[GitHub]</a></span><br>
+                </center>
+            </td>
+        </tr>
+    </table>
+
+</center>
+
+<center>
+    <table align=center width=850px>
+        <tr>
+            <td width=260px>
+                <center>
+                    <img class="round" style="width:500px" src="./resources/teaser.png"/>
+                </center>
+            </td>
+        </tr>
+    </table>
+    <table align=center width=850px>
+        <tr>
+            <td>
+                We present Transparent Neural Surface Refinement (TNSR),
+                which reconstructs transparent surfaces using only color consistency from multi-view RGB images,
+                significantly improving geometry estimation and view synthesis.
+            </td>
+        </tr>
+    </table>
+</center>
+
+<hr>
+
+<table align=center width=850px>
+    <center><h1>Abstract</h1></center>
+    <tr>
+        <td>
+            Neural implicit surface reconstruction leveraging volume rendering has led to significant advances in
+            multi-view reconstruction.
+            However, results for transparent objects can be very poor, primarily because the rendering function fails to
+            account for the intricate light transport induced by refraction and reflection.
+            In this study, we introduce transparent neural surface refinement (TNSR), a novel surface reconstruction
+            framework that explicitly incorporates physical refraction and reflection tracing.
+            Beginning with an initial, approximate surface, our method employs sphere tracing combined with Snell's law
+            to cast both reflected and refracted rays.
+            Central to our proposal is an innovative differentiable technique devised to allow signals from the
+            photometric evidence to propagate back to the surface model by considering how the surface bends and
+            reflects light rays.
+            This allows us to connect surface refinement with volume rendering, enabling end-to-end optimization solely
+            on multi-view RGB images.
+            In our experiments, TNSR demonstrates significant improvements in novel view synthesis and geometry
+            estimation of transparent objects, without prior knowledge of the refractive index.
+        </td>
+    </tr>
+</table>
+<br>
+
+<hr>
+<center><h1>Talk</h1></center>
+
+<table align=center width=650px>
+    <tr>
+        <td>
+            <div>
+                <iframe width="100%" height="360" src="https://www.youtube.com/embed/z6JbWcUcibM"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen></iframe>
+            </div>
+        </td>
+    </tr>
+</table>
+
+<table align=center width=800px>
+    <br>
+    <tr>
+        <center>
+				<span style="font-size:28px"><a href='./resources/CVPR24-NSR-Slides.pdf' target="_blank">[Slides]</a>
+				</span>
+        </center>
+    </tr>
+</table>
+<hr>
+
+<center><h1>Code</h1></center>
+<table align=center width=400px>
+    <tr>
+        <td align=center width=600px>
+            <center>
+        <td><img class="round" style="width:600px" src="./resources/method.png"/></td>
+        </center>
+        </td>
+    </tr>
+</table>
+
+<table align=center width=600px>
+    <center>
+        <tr>
+            <td>
+                <b>Ray tracing is an optimization problem</b> </p>
+                - Analytic Derivative: Proposition 4.6 from Gould et al. (2021) </p>
+                Gould etal., "Deep declarative networks." In TPAMI, 2021
+            </td>
+        </tr>
+    </center>
+</table>
+
+<table align=center width=400px>
+    <tr>
+        <td align=center width=600px>
+            <center>
+        <td><img class="round" style="width:600px" src="./resources/method_Derivative.png"/></td>
+        </center>
+        </td>
+    </tr>
+</table>
+
+<table align=center width=800px>
+    <br>
+    <tr>
+        <center>
+			<span style="font-size:28px">&nbsp;<a href='https://github.com/Simon4Yan/tnsr' target="_blank">[GitHub]</a>
+        </center>
+        </span>
+    </tr>
+</table>
+<br>
+
+<table align=center width=400px>
+    <center><h2>Enhanced Novel View Synthesis</h2></center>
+    <tr>
+        <td align=center width=600px>
+            <center>
+        <td><img class="round" style="width:500px" src="./resources/results.png"/></td>
+        </center>
+        </td>
+    </tr>
+</table>
+
+<table align=center width=400px>
+    <center><h2>Improved Surface Reconstruction</h2></center>
+    <tr>
+        <td align=center width=600px>
+            <center>
+        <td><img class="round" style="width:400px" src="./resources/results_1.png"/></td>
+        </center>
+        </td>
+    </tr>
+</table>
+
+<hr>
+<table align=center width=500px>
+    <center><h1>Paper and Supplementary Material</h1></center>
+    <tr>
+        <td><a href=""><img class="layered-paper-big" style="height:175px" src="./resources/paper.png"/></a></td>
+        <td><span style="font-size:14pt">Deng W, Campbell D, Sun C, Kanitkar S, Shaffer M, Gould S.<br>
+				<b>Neural Surface Refinement for Modeling Transparent Objects.</b><br>
+				In CVPR, 2024.<br>
+				(hosted on <a href='' target="_blank">[Paper]</a>)<br>
+            <!-- (<a href="./resources/camera-ready.pdf">camera ready</a>)<br> -->
+				<span style="font-size:4pt"><a href=""><br></a>
+				</span>
+        </td>
+    </tr>
+</table>
+<br>
+
+<table align=center width=600px>
+    <tr>
+        <td><span style="font-size:14pt"><center>
+				<a href="./resources/bibtex.txt" target="_blank">[Bibtex]</a>
+			</center></td>
+    </tr>
+</table>
+
+<hr>
+<br>
+
+<table align=center width=600px>
+    <tr>
+        <td width=400px>
+            <left>
+                <center><h1>Acknowledgements</h1></center>
+                This template was originally made by <a href="http://web.mit.edu/phillipi/">Phillip Isola</a> and <a
+                    href="http://richzhang.github.io/">Richard Zhang</a> for a <a
+                    href="http://richzhang.github.io/colorization/">colorful</a> ECCV project; the code can be found <a
+                    href="https://github.com/richzhang/webpage-template">here</a>.
+            </left>
+        </td>
+    </tr>
+</table>
+
+<br>
+</body>
+</html>
+
